@@ -1,42 +1,123 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --td-bg: #202121;
+  --td-title: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main_container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--td-bg);
+}
+
+.todo_title {
+  color: var(--td-title);
   text-align: center;
+  font-size: 30px;
+  font-weight: 600;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.input_tasks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input_bar {
+  width: 170px;
+  padding: 10px 5px;
+  background: transparent;
+  outline: none;
+  border: solid 1px gray;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.input_bar:focus {
+  box-shadow: 0 0 20px gray;
 }
 
-.card {
-  padding: 2em;
+.input_button {
+  display: flex;
+  gap: 10px;
 }
 
-.read-the-docs {
-  color: #888;
+.save_button {
+  width: 100px;
+  padding: 10px;
+  background: #427ad4;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.get_button {
+  width: 100px;
+  padding: 10px;
+  background: #c7891e;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+ul {
+  width: 500px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+ul > li {
+  width: 100%;
+  padding: 5px;
+  background-color: #fff;
 }
