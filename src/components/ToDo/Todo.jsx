@@ -9,13 +9,23 @@ const ToDo = () => {
   };
 
   const handleClick = () => {
-    setListItems([...listItems, inputValue]); //добавление нового элемента в массив
+    setListItems([
+      ...listItems,
+      { text: inputValue, id: Date.now(), completed: false },
+    ]); //добавление нового элемента в массив
     setInputValue("");
   };
 
-  const handleDeleteTask = () => {
-          
-    setListItems([]);
+  const handleCheckBox = (id) => {
+    setListItems(
+      listItems.map((item) =>
+        item.id === id ? { ...item, completed: !item.completed } : item
+      )
+    );
+  };
+
+  const handleDeleteTask = (id) => {
+    setListItems(listItems.filter((item) => item.id !== id));
   };
 
   return (
@@ -31,9 +41,11 @@ const ToDo = () => {
             onChange={handleInputChange}
           />
           <div className="input_button">
-            <button onClick={handleClick} className="save_button">
-              Save
-            </button>
+            {inputValue.length > 4 && (
+              <button onClick={handleClick} className="save_button">
+                Save
+              </button>
+            )}
             <button className="get_button">Get Tasks</button>
           </div>
         </div>
@@ -41,8 +53,15 @@ const ToDo = () => {
           <ul>
             {listItems.map((item, index) => (
               <li key={index}>
-                <input onClick={handleDeleteTask} type="checkbox" />
-                {item}
+                <input
+                  checked={item.completed}
+                  onChange={() => handleCheckBox(item.id)}
+                  type="checkbox"
+                />
+                {item.text}
+                <button onClick={() => handleDeleteTask(item.id)}>
+                  Delete
+                </button>
               </li>
             ))}
           </ul>
